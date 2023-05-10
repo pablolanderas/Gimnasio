@@ -183,10 +183,10 @@ class API():
             d = self.cursor.fetchall()
             if len(d) == 0: raise ValueError("The ID is incorrect")
             resp = {"id":idRutina, "nombre": d[0][0], "ejercicios":[]}
-            self.cursor.execute(f"select * from V_Rutinas where ID_Rutina = {idRutina}")
+            self.cursor.execute(f"select * from V_Rutinas where ID_Rutina = {idRutina} order by ID_Union")
             d = self.cursor.fetchall()
             if len(d) == 0: return resp
-            for idRut, nomRut, idEjer, nomEjer, numSer in d:
+            for idRut, nomRut, idEjer, nomEjer, numSer, idUnion in d:
                 resp["ejercicios"].append({"idEjer":idEjer, "nomEjer":nomEjer, "numSer":numSer})
             return resp
         else:

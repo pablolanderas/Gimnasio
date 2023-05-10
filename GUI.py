@@ -408,7 +408,7 @@ class GUI(QApplication):
         labelMusculo = generaLabel("Musculo", "background-color: white",
                                    estilo(18), 45, 150)
         comboMusculo = QComboBox()
-        comboMusculo.setFixedWidth(240)
+        comboMusculo.setFixedWidth(400)
         comboMusculo.setFixedHeight(45)
         comboMusculo.setStyleSheet("background-color: white")
         comboMusculo.addItems(self.API.musculos.values())
@@ -423,7 +423,7 @@ class GUI(QApplication):
         labelNombre = generaLabel("Nombre", "background-color: white",
                                   estilo(18), 45, 150)
         entradaNombre = QLineEdit()
-        entradaNombre.setFixedWidth(240)
+        entradaNombre.setFixedWidth(400)
         entradaNombre.setFixedHeight(45)
         entradaNombre.setStyleSheet("background-color: white")
         entradaNombre.setFont(estilo(15))
@@ -1101,7 +1101,7 @@ class GUI(QApplication):
         titulo = generaLabel(datos["nombre"], None, estilo(25))
 
         layoutContEjer = QHBoxLayout()
-        widgetEjer = generaWidget(500, 500, AZUL_OSCURO)
+        widgetEjer = generaWidget(500, 1000, AZUL_OSCURO)
         layoutContEjer.addItem(espaciadorHorizontal())
         layoutContEjer.addWidget(widgetEjer)
         layoutContEjer.addItem(espaciadorHorizontal())
@@ -1206,8 +1206,9 @@ class GUI(QApplication):
             while punteroSeleccion: del punteroSeleccion[0]
             punteroSeleccion.append(seleccionado)
             for i in range(len(labels)):
-                if i != pos: labels[i].setStyleSheet("background-color: white")
-                else: labels[i].setStyleSheet(AZUL_OSCURO)
+                if type(labels[i]) == QLabel:
+                    if i != pos: labels[i].setStyleSheet("background-color: white")
+                    else: labels[i].setStyleSheet(AZUL_OSCURO)
         def muestraEjercicios(punteroSeleccion:list, botonAceptar:QLabel, evento=None, idMusculo=None, widget=None, layout:QHBoxLayout=None):
             #Elimina y crea el widget
             if widget is not None: widget.deleteLater()
@@ -1254,9 +1255,9 @@ class GUI(QApplication):
             for index, (id, nom, idMus, nomMus) in enumerate(datos):
                 if punteroSeleccion and id == punteroSeleccion[0]: est = AZUL_OSCURO
                 else: est = "background-color: white"
-                labels.append(generaLabel(nom, est, estilo(15), 80, 250))
+                labels.append(generaLabel(nom, est, estilo(15), 80, 420))
                 labels[index].mousePressEvent = partial(pulsadoEjercicio, punteroSeleccion, id, labels, index, botonAceptar)
-            while len(labels) % 3 != 0: labels.append(generaWidget(80, 250))
+            while len(labels) % 3 != 0: labels.append(generaWidget(80, 420))
             
             #Muestra los ejercicios
             layoutEjercicios.setSpacing(30)

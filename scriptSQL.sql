@@ -91,7 +91,7 @@ create view V_Ult_Entrenos_Ejercicio as
 drop view if exists V_Rutinas;
 
 create view V_Rutinas as
-    select t.ID_Rutina, r.Nombre as NombreRutina, t.ID_Ejercicio, e.Nombre as NombreEjer, t.Series
+    select t.ID_Rutina, r.Nombre as NombreRutina, t.ID_Ejercicio, e.Nombre as NombreEjer, t.Series, t.ID as ID_Union
     from Rutina r inner join EjerRutina t on r.ID = t.ID_Rutina 
     inner join Ejercicio e on t.ID_Ejercicio = e.ID
     order by t.ID_Rutina, t.ID_Ejercicio;

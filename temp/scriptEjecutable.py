@@ -22,6 +22,7 @@ ELIMINAR = [
     "C:\\Pablo\\Casa\\Programacion\\Gimnasio\\__pycache__",
     "C:\\Pablo\\Casa\\Programacion\\Gimnasio\\build",
     "C:\\Pablo\\Casa\\Programacion\\Gimnasio\\dist",
+    "C:\\Pablo\\Casa\\Programacion\\Gimnasio\\Gimnasio",
     "C:\\Pablo\\Casa\\Programacion\\Gimnasio\\main.spec"
 ]
 
