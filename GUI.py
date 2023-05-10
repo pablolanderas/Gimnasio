@@ -1040,6 +1040,7 @@ class GUI(QApplication):
             lab = generaLabel(dic["nombre"], AZUL_CLARO, estilo(15), 60)
             lab.mousePressEvent = partial(self.abreInfoRutina, dic["id"])
             layoutRutinas.addWidget(lab)
+        layoutRutinas.addItem(espaciadorVertical())
 
         layoutNueva = QHBoxLayout()
         botonNueva = generaLabel("Nueva rutina", AZUL_OSCURO, estilo(20), 80, 500)
